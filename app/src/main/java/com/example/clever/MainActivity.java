@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setExpenseAdapter();
         setOnClickListener();
 
-        Button button = (Button) findViewById(R.id.add_expense);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button addExpenseBtn = (Button) findViewById(R.id.add_expense);
+        addExpenseBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent activityA = new Intent(MainActivity.this, AddExpense.class);
                 startActivityForResult(activityA, 1);

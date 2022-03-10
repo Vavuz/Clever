@@ -21,6 +21,20 @@ public class AddExpense extends AppCompatActivity {
         setContentView(R.layout.add_expense);
         initWidgets();
         checkForEditExpense();
+
+        Button saveExpenseBtn = (Button) findViewById(R.id.add);
+        saveExpenseBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                saveExpense(v);
+            }
+        });
+
+        Button button = (Button) findViewById(R.id.deleteExpenseButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deleteExpense(v);
+            }
+        });
     }
 
     private void initWidgets()

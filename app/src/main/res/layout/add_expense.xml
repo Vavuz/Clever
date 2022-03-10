@@ -5,41 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="159dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginBottom="193dp"
-        android:text="TEMPORARY TEXTVIEW"
-        app:layout_constraintBottom_toTopOf="@+id/expense_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="147dp"
-        android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expense_type"
-        android:onClick="saveExpense" />
-
     <EditText
         android:id="@+id/expense_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="312dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Subscription name"
-        app:layout_constraintBottom_toTopOf="@+id/expense_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/expense_price"
@@ -48,7 +24,6 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Subscription price"
-        app:layout_constraintBottom_toTopOf="@+id/expense_type"
         app:layout_constraintStart_toStartOf="@+id/expense_name"
         app:layout_constraintTop_toBottomOf="@+id/expense_name" />
 
@@ -56,25 +31,34 @@
         android:id="@+id/expense_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="90dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Subscription type"
-        app:layout_constraintBottom_toTopOf="@+id/add"
         app:layout_constraintStart_toStartOf="@+id/expense_price"
         app:layout_constraintTop_toBottomOf="@+id/expense_price" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="1dp"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/deleteExpenseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DELETE"
-        android:textSize="25sp"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:onClick="deleteExpense"/>
+        android:layout_marginBottom="1dp"
+        android:backgroundTint="@color/white"
+        android:text="DELETE"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
