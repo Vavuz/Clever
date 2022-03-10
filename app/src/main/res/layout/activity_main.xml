@@ -18,6 +18,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
+    <ListView
+        android:id="@+id/expenses_list"
+        android:layout_width="346dp"
+        android:layout_height="448dp"
+        android:layout_marginBottom="152dp"
+        android:drawSelectorOnTop="false"
+        android:textSize="8sp"
+        android:divider="@color/gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="1.0"></ListView>
+
     <Button
         android:id="@+id/add_expense"
         android:layout_width="239dp"
@@ -28,15 +43,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <ListView
-        android:id="@+id/expenses_list"
-        android:layout_width="369dp"
-        android:layout_height="420dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"></ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

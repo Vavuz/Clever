@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Clever</string>
     <string name="add_expense">Add Expense</string>
+
+    <string name="check_data_title">"NAME - TELEPHONE NO - EMAIL - ADDRESS"</string>
+    <string name="add_next_dialog_message">"Information saved.\nAdd another contact?"</string>
+    <string name="add_next_dialog_confirm_yes">"Yes"</string>
+    <string name="add_next_dialog_confirm_no">"No"</string>
 </resources>
