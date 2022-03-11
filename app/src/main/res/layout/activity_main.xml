@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".MainActivity">
 
     <ImageView
@@ -25,7 +26,8 @@
         android:layout_marginBottom="152dp"
         android:drawSelectorOnTop="false"
         android:textSize="8sp"
-        android:divider="@color/gray"
+        android:divider="@color/black"
+        android:dividerHeight="0.5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -39,6 +41,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="74dp"
         android:text="@string/add_expense"
+        android:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
