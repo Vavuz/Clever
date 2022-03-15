@@ -3,41 +3,70 @@ package com.example.clever;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class AddExpense extends AppCompatActivity {
 
+    // Interface's features initialisation
     private EditText nameEditText, priceEditText, subscriptionTypeEditText;
     private Button deleteButton;
     private Expense selectedExpense;
 
+    /**
+     * Activity's creation method
+     * @param savedInstanceState
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); // the title will be hidden
+        getSupportActionBar().hide(); // the title bar will be hidden
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.add_expense);
         initWidgets();
         checkForEditExpense();
 
+        /*
+        _binding = FragmentFirstBinding;
+        String[] types = getResources().getStringArray(R.array.types);
+        String[] arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown, types);
+        binding.autoCompleteTextView.setAdapter(arrayAdapter);
+
+         */
+
+        // Button to add an expense to the database
         Button saveExpenseBtn = (Button) findViewById(R.id.add);
         saveExpenseBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Toast.makeText(getBaseContext(), nameEditText.getText() + " has been added!", Toast.LENGTH_LONG).show();
                 saveExpense(v);
             }
         });
 
+        // Button to delete an expense from the database
         Button button = (Button) findViewById(R.id.deleteExpenseButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Toast.makeText(getBaseContext(), nameEditText.getText() + " has been deleted!", Toast.LENGTH_LONG).show();
                 deleteExpense(v);
             }
         });
     }
 
+    /**
+     * Interface's features instantiation
+     */
     private void initWidgets()
     {
         nameEditText = findViewById(R.id.expense_name);

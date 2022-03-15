@@ -11,6 +11,7 @@ import android.os.Handler;
 public class SplashScreen extends Activity {
 
     Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
