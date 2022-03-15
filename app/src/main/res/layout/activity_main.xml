@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android2="https://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,11 +10,12 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="135dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="478dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_expense"
+        android:layout_marginEnd="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/expenses_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,30 +23,32 @@
 
     <ListView
         android:id="@+id/expenses_list"
-        android:layout_width="346dp"
-        android:layout_height="448dp"
-        android:layout_marginBottom="152dp"
-        android:drawSelectorOnTop="false"
-        android:textSize="8sp"
+        android:layout_width="343dp"
+        android:layout_height="621dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
         android:divider="@color/black"
         android:dividerHeight="0.5dp"
+        android:drawSelectorOnTop="false"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintVertical_bias="1.0"></ListView>
+        app:layout_constraintTop_toBottomOf="@+id/logo"></ListView>
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_expense"
-        android:layout_width="239dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="74dp"
-        android:text="@string/add_expense"
-        android:backgroundTint="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="10dp"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/gray"
+        android:src="@drawable/ic_add"
+        app:tint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
