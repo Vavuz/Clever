@@ -5,21 +5,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class AddExpense extends AppCompatActivity {
 
     // Interface's features initialisation
-    private EditText nameEditText, priceEditText, subscriptionTypeEditText;
+    private EditText nameEditText, priceEditText;
+    private Spinner provaUnoDueSpinner;
     private Button deleteButton;
     private Expense selectedExpense;
 
@@ -37,20 +42,17 @@ public class AddExpense extends AppCompatActivity {
         initWidgets();
         checkForEditExpense();
 
-        /*
-        _binding = FragmentFirstBinding;
-        String[] types = getResources().getStringArray(R.array.types);
-        String[] arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown, types);
-        binding.autoCompleteTextView.setAdapter(arrayAdapter);
-
-         */
-
         // Button to add an expense to the database
         Button saveExpenseBtn = (Button) findViewById(R.id.add);
         saveExpenseBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(), nameEditText.getText() + " has been added!", Toast.LENGTH_LONG).show();
-                saveExpense(v);
+                if (nameEditText.getText().toString().isEmpty() || priceEditText.getText().toString().isEmpty()){
+                    Toast.makeText(getBaseContext(), "You are missing a field!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getBaseContext(), nameEditText.getText() + " has been added!", Toast.LENGTH_LONG).show();
+                    saveExpense(v);
+                }
             }
         });
 
@@ -62,6 +64,8 @@ public class AddExpense extends AppCompatActivity {
                 deleteExpense(v);
             }
         });
+
+
     }
 
     /**
@@ -71,8 +75,14 @@ public class AddExpense extends AppCompatActivity {
     {
         nameEditText = findViewById(R.id.expense_name);
         priceEditText = findViewById(R.id.expense_price);
-        subscriptionTypeEditText = findViewById(R.id.expense_type);
         deleteButton = findViewById(R.id.deleteExpenseButton);
+
+        // Spinner for expense type
+        provaUnoDueSpinner = findViewById(R.id.provaUnoDue);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.types, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        provaUnoDueSpinner.setAdapter(adapter);
     }
 
     private void checkForEditExpense()
@@ -86,7 +96,7 @@ public class AddExpense extends AppCompatActivity {
         {
             nameEditText.setText(selectedExpense.getName());
             priceEditText.setText(selectedExpense.getPrice());
-            subscriptionTypeEditText.setText(selectedExpense.getSubscriptionType());
+            provaUnoDueSpinner.setSelection(getIndex(provaUnoDueSpinner, selectedExpense.getSubscriptionType(), provaUnoDueSpinner.getCount()));
         }
         else
         {
@@ -94,12 +104,29 @@ public class AddExpense extends AppCompatActivity {
         }
     }
 
+    /**
+     * Finds the index of a specific element of the dropdown menu
+     * @param provaUnoDueSpinner
+     * @param subscriptionType
+     * @param count
+     * @return
+     */
+    private int getIndex(Spinner provaUnoDueSpinner, String subscriptionType, int count) {
+        for (int i = 0; i < count; i++) {
+            if (provaUnoDueSpinner.getItemAtPosition(i).toString().equals(subscriptionType)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
     public void saveExpense(View view)
     {
         ExpensesDatabaseManager sqLiteManager = ExpensesDatabaseManager.instanceOfDatabase(this);
         String name = String.valueOf(nameEditText.getText());
         String price = String.valueOf(priceEditText.getText());
-        String subscriptionType = String.valueOf(subscriptionTypeEditText.getText());
+        //String subscriptionType = String.valueOf(subscriptionTypeEditText.getText());
+        String subscriptionType = provaUnoDueSpinner.getSelectedItem().toString();
 
         if(selectedExpense == null)
         {

@@ -11,18 +11,19 @@
         <item>Weekly</item>
         <item>Every two weeks</item>
         <item>Every three weeks</item>
-        <item>FOURWEEKS</item>
-        <item>MONTHLY</item>
-        <item>TWOMONTHS</item>
-        <item>THREEMONTHS</item>
-        <item>FOURMONTHS</item>
-        <item>FIVEMONTHS</item>
-        <item>SIXMONTHS</item>
-        <item>YEARLY</item>
-        <item>TWOYEARS</item>
-        <item>THREEYEARS</item>
-        <item>FOURYEARS</item>
-        <item>FIVEYEARS</item>
-        <item>TENYEARS</item>
+        <item>Every four weeks</item>
+        <item>Monthly</item>
+        <item>Every two months</item>
+        <item>Every three months</item>
+        <item>Every four months</item>
+        <item>Every five months</item>
+        <item>Every six months</item>
+        <item>Yearly</item>
+        <item>Every two years</item>
+        <item>Every three years</item>
+        <item>Every four years</item>
+        <item>Every five years</item>
+        <item>Every ten years</item>
     </string-array>
+
 </resources>
