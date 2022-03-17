@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.Date;
 
 public class AddExpense extends AppCompatActivity {
@@ -20,7 +22,7 @@ public class AddExpense extends AppCompatActivity {
     // Interface's features initialisation
     private EditText nameEditText, priceEditText;
     private Spinner typeSpinner;
-    private Button deleteButton;
+    private FloatingActionButton deleteButton;
     private Expense selectedExpense;
 
     /**
@@ -38,7 +40,7 @@ public class AddExpense extends AppCompatActivity {
         checkForEditExpense();
 
         // Button to add an expense to the database
-        Button saveExpenseBtn = (Button) findViewById(R.id.add);
+        FloatingActionButton saveExpenseBtn = (FloatingActionButton) findViewById(R.id.add);
         saveExpenseBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (nameEditText.getText().toString().isEmpty() || priceEditText.getText().toString().isEmpty()){
@@ -52,8 +54,7 @@ public class AddExpense extends AppCompatActivity {
         });
 
         // Button to delete an expense from the database
-        Button button = (Button) findViewById(R.id.deleteExpenseButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(), nameEditText.getText() + " has been deleted!", Toast.LENGTH_LONG).show();
                 deleteExpense(v);
