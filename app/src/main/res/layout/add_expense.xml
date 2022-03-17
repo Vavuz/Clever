@@ -92,7 +92,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/provaUnoDueCard"
+        android:id="@+id/expense_type_card"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginStart="32dp"
@@ -106,7 +106,7 @@
         app:strokeWidth="1dp">
 
         <Spinner
-            android:id="@+id/provaUnoDue"
+            android:id="@+id/expense_type"
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:layout_marginBottom="180dp"

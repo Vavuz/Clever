@@ -5,26 +5,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class AddExpense extends AppCompatActivity {
 
     // Interface's features initialisation
     private EditText nameEditText, priceEditText;
-    private Spinner provaUnoDueSpinner;
+    private Spinner typeSpinner;
     private Button deleteButton;
     private Expense selectedExpense;
 
@@ -50,7 +45,7 @@ public class AddExpense extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "You are missing a field!", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(getBaseContext(), nameEditText.getText() + " has been added!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), nameEditText.getText() + " has been saved!", Toast.LENGTH_LONG).show();
                     saveExpense(v);
                 }
             }
@@ -64,8 +59,6 @@ public class AddExpense extends AppCompatActivity {
                 deleteExpense(v);
             }
         });
-
-
     }
 
     /**
@@ -78,11 +71,11 @@ public class AddExpense extends AppCompatActivity {
         deleteButton = findViewById(R.id.deleteExpenseButton);
 
         // Spinner for expense type
-        provaUnoDueSpinner = findViewById(R.id.provaUnoDue);
+        typeSpinner = findViewById(R.id.expense_type);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.types, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        provaUnoDueSpinner.setAdapter(adapter);
+        typeSpinner.setAdapter(adapter);
     }
 
     private void checkForEditExpense()
@@ -96,7 +89,7 @@ public class AddExpense extends AppCompatActivity {
         {
             nameEditText.setText(selectedExpense.getName());
             priceEditText.setText(selectedExpense.getPrice());
-            provaUnoDueSpinner.setSelection(getIndex(provaUnoDueSpinner, selectedExpense.getSubscriptionType(), provaUnoDueSpinner.getCount()));
+            typeSpinner.setSelection(getIndex(typeSpinner, selectedExpense.getSubscriptionType(), typeSpinner.getCount()));
         }
         else
         {
@@ -125,8 +118,7 @@ public class AddExpense extends AppCompatActivity {
         ExpensesDatabaseManager sqLiteManager = ExpensesDatabaseManager.instanceOfDatabase(this);
         String name = String.valueOf(nameEditText.getText());
         String price = String.valueOf(priceEditText.getText());
-        //String subscriptionType = String.valueOf(subscriptionTypeEditText.getText());
-        String subscriptionType = provaUnoDueSpinner.getSelectedItem().toString();
+        String subscriptionType = typeSpinner.getSelectedItem().toString();
 
         if(selectedExpense == null)
         {
