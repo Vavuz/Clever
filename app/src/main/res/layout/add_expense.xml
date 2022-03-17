@@ -5,75 +5,119 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/expense_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/expense_name"
-        android:drawableStart="@drawable/ic_name"
-        android:drawablePadding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/expense_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/expense_price"
-        android:drawableStart="@drawable/ic_price"
-        android:drawablePadding="10dp"
-        app:layout_constraintStart_toStartOf="@+id/expense_name"
-        app:layout_constraintTop_toBottomOf="@+id/expense_name" />
-
-    <EditText
-        android:id="@+id/expense_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/expense_type"
-        android:drawableStart="@drawable/ic_type"
-        android:drawablePadding="10dp"
-        app:layout_constraintStart_toStartOf="@+id/expense_price"
-        app:layout_constraintTop_toBottomOf="@+id/expense_price" />
-
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="1dp"
-        android:text="Add"
+        android:layout_gravity="end|bottom"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="@color/teal_700"
+        android:elevation="10dp"
+        android:src="@drawable/ic_save"
+        app:borderWidth="0dp"
+        app:tint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteExpenseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="1dp"
-        android:backgroundTint="@color/white"
-        android:text="DELETE"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:layout_gravity="end|bottom"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="@color/teal_700"
+        android:elevation="10dp"
+        android:src="@drawable/ic_delete"
+        app:borderWidth="0dp"
+        app:tint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="173dp"
         android:text="Add a Subscription"
-        android:textSize="32dp"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="217dp" />
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/expense_name_editText"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="71dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/expense_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_name"
+            android:drawablePadding="10dp"
+            android:hint="@string/expense_name"
+            android:maxLength="20" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/expense_price_editText"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="308dp"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@id/expense_name_editText"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/expense_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_price"
+            android:drawablePadding="10dp"
+            android:hint="@string/expense_price"
+            android:inputType="numberDecimal"
+            android:maxLength="10" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/expense_type_card"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/expense_price_editText"
+        app:strokeColor="@color/material_timepicker_button_stroke"
+        app:strokeWidth="1dp">
+
+        <Spinner
+            android:id="@+id/expense_type"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_marginBottom="180dp"
+            android:dropDownWidth="200dp"
+            android:text="Type" />
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

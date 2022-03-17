@@ -5,4 +5,25 @@
     <string name="expense_name">Expense Name</string>
     <string name="expense_price">Expense Price</string>
     <string name="expense_type">Expense Type</string>
+
+    <string-array name="types">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Every two weeks</item>
+        <item>Every three weeks</item>
+        <item>Every four weeks</item>
+        <item>Monthly</item>
+        <item>Every two months</item>
+        <item>Every three months</item>
+        <item>Every four months</item>
+        <item>Every five months</item>
+        <item>Every six months</item>
+        <item>Yearly</item>
+        <item>Every two years</item>
+        <item>Every three years</item>
+        <item>Every four years</item>
+        <item>Every five years</item>
+        <item>Every ten years</item>
+    </string-array>
+
 </resources>

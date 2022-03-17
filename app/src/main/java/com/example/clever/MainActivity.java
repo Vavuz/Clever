@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.view.Window;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class MainActivity extends AppCompatActivity {
 
     private ListView expenseListView;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setExpenseAdapter();
         setOnClickListener();
 
-        Button addExpenseBtn = (Button) findViewById(R.id.add_expense);
+        FloatingActionButton  addExpenseBtn = (FloatingActionButton) findViewById(R.id.add_expense);
         addExpenseBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent activityA = new Intent(MainActivity.this, AddExpense.class);
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void initWidgets()
     {
