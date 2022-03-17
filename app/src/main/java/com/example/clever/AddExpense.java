@@ -79,21 +79,21 @@ public class AddExpense extends AppCompatActivity {
         typeSpinner.setAdapter(adapter);
     }
 
-    private void checkForEditExpense()
-    {
+    /**
+     * Manages the expense's editing functionality
+     */
+    private void checkForEditExpense() {
         Intent previousIntent = getIntent();
 
         int passedExpenseID = previousIntent.getIntExtra(Expense.EXPENSE_EDIT_EXTRA, -1);
         selectedExpense = Expense.getExpenseForID(passedExpenseID);
 
-        if (selectedExpense != null)
-        {
+        if (selectedExpense != null) {
             nameEditText.setText(selectedExpense.getName());
             priceEditText.setText(selectedExpense.getPrice());
             typeSpinner.setSelection(getIndex(typeSpinner, selectedExpense.getSubscriptionType(), typeSpinner.getCount()));
         }
-        else
-        {
+        else {
             deleteButton.setVisibility(View.INVISIBLE);
         }
     }
@@ -114,22 +114,23 @@ public class AddExpense extends AppCompatActivity {
         return 0;
     }
 
-    public void saveExpense(View view)
-    {
+    /**
+     * Manages the expense's adding
+     * @param view
+     */
+    public void saveExpense(View view) {
         ExpensesDatabaseManager sqLiteManager = ExpensesDatabaseManager.instanceOfDatabase(this);
         String name = String.valueOf(nameEditText.getText());
         String price = String.valueOf(priceEditText.getText());
         String subscriptionType = typeSpinner.getSelectedItem().toString();
 
-        if(selectedExpense == null)
-        {
+        if(selectedExpense == null) {
             int id = Expense.expenseArrayList.size();
             Expense newExpense = new Expense(id, name, price, subscriptionType);
             Expense.expenseArrayList.add(newExpense);
             sqLiteManager.addExpenseToDatabase(newExpense);
         }
-        else
-        {
+        else {
             selectedExpense.setName(name);
             selectedExpense.setPrice(price);
             selectedExpense.setSubscriptionType(subscriptionType);
@@ -139,8 +140,11 @@ public class AddExpense extends AppCompatActivity {
         finish();
     }
 
-    public void deleteExpense(View view)
-    {
+    /**
+     * Manages the expense's deletion
+     * @param view
+     */
+    public void deleteExpense(View view) {
         selectedExpense.setDeleted(new Date());
         ExpensesDatabaseManager sqLiteManager = ExpensesDatabaseManager.instanceOfDatabase(this);
         sqLiteManager.updateExpenseInDB(selectedExpense);
