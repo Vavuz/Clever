@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -48,6 +47,7 @@ public class AddExpense extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(getBaseContext(), nameEditText.getText() + " has been saved!", Toast.LENGTH_LONG).show();
+                    MainActivity.totalExpensePerDay += Float.parseFloat(priceEditText.getText().toString());
                     saveExpense(v);
                 }
             }
@@ -57,6 +57,7 @@ public class AddExpense extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(), nameEditText.getText() + " has been deleted!", Toast.LENGTH_LONG).show();
+                MainActivity.totalExpensePerDay -= Float.parseFloat(priceEditText.getText().toString());
                 deleteExpense(v);
             }
         });
@@ -100,14 +101,14 @@ public class AddExpense extends AppCompatActivity {
 
     /**
      * Finds the index of a specific element of the dropdown menu
-     * @param provaUnoDueSpinner
+     * @param spinner
      * @param subscriptionType
      * @param count
      * @return
      */
-    private int getIndex(Spinner provaUnoDueSpinner, String subscriptionType, int count) {
+    private int getIndex(Spinner spinner, String subscriptionType, int count) {
         for (int i = 0; i < count; i++) {
-            if (provaUnoDueSpinner.getItemAtPosition(i).toString().equals(subscriptionType)) {
+            if (spinner.getItemAtPosition(i).toString().equals(subscriptionType)) {
                 return i;
             }
         }

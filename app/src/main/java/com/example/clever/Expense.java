@@ -2,28 +2,12 @@ package com.example.clever;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
-enum SubscriptionType {
-    DAILY,
-    WEEKLY,
-    TWOWEEKS,
-    THREEWEEKS,
-    FOURWEEKS,
-    MONTHLY,
-    TWOMONTHS,
-    THREEMONTHS,
-    FOURMONTHS,
-    FIVEMONTHS,
-    SIXMONTHS,
-    YEARLY,
-    TWOYEARS,
-    THREEYEARS,
-    FOURYEARS,
-    FIVEYEARS,
-    TENYEARS
-}
 
 public class Expense {
+    HashMap<String, Integer> subscriptionsDict = new HashMap<String, Integer>();
+
     public static ArrayList<Expense> expenseArrayList = new ArrayList<>();
     public static String EXPENSE_EDIT_EXTRA =  "expenseEdit";
 
@@ -40,6 +24,7 @@ public class Expense {
         this.price = price;
         this.subscriptionType = subscriptionType;
         this.deleted = deleted;
+        populateDictionary();
     }
 
     public Expense(int id, String name, String price, String subscriptionType)
@@ -49,6 +34,26 @@ public class Expense {
         this.price = price;
         this.subscriptionType = subscriptionType;
         deleted = null;
+    }
+
+    public void populateDictionary() {
+        this.subscriptionsDict.put("Daily", 1);
+        this.subscriptionsDict.put("Weekly", 7);
+        this.subscriptionsDict.put("Every two weeks", 14);
+        this.subscriptionsDict.put("Every three weeks", 21);
+        this.subscriptionsDict.put("Every four weeks", 28);
+        this.subscriptionsDict.put("Monthly", 30);
+        this.subscriptionsDict.put("Every two months", 60);
+        this.subscriptionsDict.put("Every three months", 90);
+        this.subscriptionsDict.put("Every four months", 120);
+        this.subscriptionsDict.put("Every five months", 150);
+        this.subscriptionsDict.put("Every six months", 180);
+        this.subscriptionsDict.put("Yearly", 365);
+        this.subscriptionsDict.put("Every two years", 730);
+        this.subscriptionsDict.put("Every three years", 1095);
+        this.subscriptionsDict.put("Every four years", 1460);
+        this.subscriptionsDict.put("Every five years", 1825);
+        this.subscriptionsDict.put("Every ten years", 3650);
     }
 
     public static Expense getExpenseForID(int passedExpenseID)

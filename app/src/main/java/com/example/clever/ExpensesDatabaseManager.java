@@ -95,7 +95,7 @@ public class ExpensesDatabaseManager extends SQLiteOpenHelper {
 
         try (Cursor result = expensesDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null))
         {
-            if(result.getCount() != 0)
+            if (result.getCount() != 0)
             {
                 while (result.moveToNext())
                 {
@@ -107,6 +107,7 @@ public class ExpensesDatabaseManager extends SQLiteOpenHelper {
                     Date deleted = getDateFromString(stringDeleted);
                     Expense expense = new Expense(id,name,price,subscriptionType,deleted);
                     Expense.expenseArrayList.add(expense);
+                    //MainActivity.dio += Float.parseFloat(price);
                 }
             }
         }
