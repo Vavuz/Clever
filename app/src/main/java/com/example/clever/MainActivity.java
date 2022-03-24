@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
             float fullPrice = Float.parseFloat(expense1.getPrice());
             totalExpensePerDay += fullPrice / tempExpense.subscriptionsDict.get(expense1.getSubscriptionType());
         }
-        Toast.makeText(getBaseContext(), totalExpensePerDay + " EDDAJE COMEE ON!", Toast.LENGTH_LONG).show();
 
         FloatingActionButton  addExpenseBtn = findViewById(R.id.add_expense);
         addExpenseBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // ViewPager2 creation
         ViewPager2 totalPager = (ViewPager2) findViewById(R.id.total_expenses);
         ArrayList<ViewPagerItem> viewPagerItems = new ArrayList<>();
         viewPagerItems.add(new ViewPagerItem("Daily total:", totalExpensePerDay));
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerItems.add(new ViewPagerItem("Monthly total:", totalExpensePerDay * 30));
         viewPagerItems.add(new ViewPagerItem("Yearly total:", totalExpensePerDay * 365));
 
+        // ViewPager2 adapter creation
         ViewPagerAdapter adapter = new ViewPagerAdapter(viewPagerItems);
         totalPager.setAdapter(adapter);
         totalPager.setClipToPadding(false);
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         Intent newExpenseIntent = new Intent(this, AddExpense.class);
         startActivity(newExpenseIntent);
     }
+
 
     @Override
     protected void onResume()
