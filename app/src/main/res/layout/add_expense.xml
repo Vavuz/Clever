@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
@@ -12,7 +13,7 @@
         android:layout_gravity="end|bottom"
         android:layout_marginRight="13dp"
         android:layout_marginBottom="14dp"
-        android:backgroundTint="@color/teal_700"
+        android:backgroundTint="@color/add_save_color"
         android:elevation="10dp"
         android:src="@drawable/ic_save"
         app:borderWidth="0dp"
@@ -27,7 +28,7 @@
         android:layout_gravity="end|bottom"
         android:layout_marginLeft="13dp"
         android:layout_marginBottom="14dp"
-        android:backgroundTint="@color/teal_700"
+        android:backgroundTint="@color/delete_color"
         android:elevation="10dp"
         android:src="@drawable/ic_delete"
         app:borderWidth="0dp"
@@ -40,7 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="173dp"
-        android:text="Add a Subscription"
+        android:text="@string/add_sub"
+        android:textColor="@color/cells_titles_color"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +119,24 @@
             android:layout_height="61dp"
             android:layout_marginBottom="180dp"
             android:dropDownWidth="200dp"
+            android:background="@color/main_background"
             android:text="Type" />
     </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/backSettings"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="61dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/gray"
+        android:drawableLeft="@drawable/ic_back"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

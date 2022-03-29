@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@color/launcher_back">
+        android:background="@color/default_app_color">
 
         <ImageView
             android:id="@+id/logo_id"

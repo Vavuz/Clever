@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -50,6 +51,15 @@ public class AddExpense extends AppCompatActivity {
                     MainActivity.totalExpensePerDay += Float.parseFloat(priceEditText.getText().toString());
                     saveExpense(v);
                 }
+            }
+        });
+
+        // Back button
+        Button settingsBackBtn = findViewById(R.id.backSettings);
+        settingsBackBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent settingsActivity = new Intent(AddExpense.this, MainActivity.class);
+                startActivityForResult(settingsActivity, 1);
             }
         });
 

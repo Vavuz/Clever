@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android2="https://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,26 +9,25 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="551dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_expense"
+        android:layout_width="222dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/total_expenses"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.viewpager2.widget.ViewPager2 xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/total_expenses"
         android:layout_width="match_parent"
         android:layout_height="138dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintBottom_toTopOf="@id/expenses_list"/>
+        app:layout_constraintBottom_toTopOf="@id/expenses_list"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <ListView
         android:id="@+id/expenses_list"
@@ -51,15 +49,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="14dp"
-        android:backgroundTint="@color/teal_700"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/add_expense_color"
         android:elevation="10dp"
         android:src="@drawable/ic_add"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:tint="@null" />
+
+    <Button
+        android:id="@+id/settings"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="61dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/gray"
+        android:drawableLeft="@drawable/ic_settings"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintRight_toLeftOf="@id/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

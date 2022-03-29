@@ -1,6 +1,7 @@
 package com.example.clever;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.view.Window;
 import android.widget.Toast;
@@ -46,11 +48,21 @@ public class MainActivity extends AppCompatActivity {
             totalExpensePerDay += fullPrice / tempExpense.subscriptionsDict.get(expense1.getSubscriptionType());
         }
 
+        // Add expense button
         FloatingActionButton  addExpenseBtn = findViewById(R.id.add_expense);
         addExpenseBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent activityA = new Intent(MainActivity.this, AddExpense.class);
-                startActivityForResult(activityA, 1);
+                Intent addExpenseActivity = new Intent(MainActivity.this, AddExpense.class);
+                startActivityForResult(addExpenseActivity, 1);
+            }
+        });
+
+        // Settings button
+        Button settingsBtn = findViewById(R.id.settings);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent settingsActivity = new Intent(MainActivity.this, Settings.class);
+                startActivityForResult(settingsActivity, 1);
             }
         });
 

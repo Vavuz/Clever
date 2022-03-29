@@ -26,7 +26,4 @@
         <item>Every ten years</item>
     </string-array>
 
-    <string name="dark_mode">Dark mode</string>
-    <string name="add_sub">Add a subscription:</string>
-
 </resources>
