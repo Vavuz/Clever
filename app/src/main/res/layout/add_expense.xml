@@ -96,7 +96,7 @@
             android:drawablePadding="10dp"
             android:hint="@string/expense_price"
             android:inputType="numberDecimal"
-            android:maxLength="10" />
+            android:maxLength="8" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.card.MaterialCardView

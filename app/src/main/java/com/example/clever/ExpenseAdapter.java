@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ExpenseAdapter extends ArrayAdapter<Expense> {
@@ -29,7 +30,9 @@ public class ExpenseAdapter extends ArrayAdapter<Expense> {
         TextView name = convertView.findViewById(R.id.cellName);
         TextView price = convertView.findViewById(R.id.cellPrice);
         name.setText(expense.getName());
-        price.setText(expense.getPrice());
+
+        DecimalFormat df = new DecimalFormat("0.00");
+        price.setText("£" + df.format(Float.parseFloat(expense.getPrice())));
 
         return convertView;
     }

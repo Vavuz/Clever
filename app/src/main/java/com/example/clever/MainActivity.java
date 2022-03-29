@@ -1,5 +1,6 @@
 package com.example.clever;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
@@ -15,9 +16,14 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import me.relex.circleindicator.CircleIndicator;
+import me.relex.circleindicator.CircleIndicator3;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
         totalPager.setClipChildren(false);
         totalPager.setOffscreenPageLimit(2);
         totalPager.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
+
+        CircleIndicator3 indicator = (CircleIndicator3) findViewById(R.id.tab_view);
+        indicator.setViewPager(totalPager);
+
     }
 
     private void initWidgets()

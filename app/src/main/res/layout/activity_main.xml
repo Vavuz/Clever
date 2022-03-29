@@ -74,4 +74,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/tab_view"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@id/total_expenses" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

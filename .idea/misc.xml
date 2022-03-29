@@ -10,6 +10,9 @@
         <entry key="..\:/Apps/Clever/app/src/main/res/drawable/ic_money.xml" value="0.2265" />
         <entry key="..\:/Apps/Clever/app/src/main/res/drawable/ic_type.xml" value="0.206" />
         <entry key="..\:/Apps/Clever/app/src/main/res/drawable/spinner_style.xml" value="0.206" />
+        <entry key="..\:/Apps/Clever/app/src/main/res/drawable/tab_indicator_default.xml" value="0.226" />
+        <entry key="..\:/Apps/Clever/app/src/main/res/drawable/tab_indicator_seleccted.xml" value="0.226" />
+        <entry key="..\:/Apps/Clever/app/src/main/res/drawable/tab_selector.xml" value="0.226" />
         <entry key="..\:/Apps/Clever/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Apps/Clever/app/src/main/res/layout/add_expense.xml" value="0.264" />
         <entry key="..\:/Apps/Clever/app/src/main/res/layout/dropdown.xml" value="0.22826086956521738" />

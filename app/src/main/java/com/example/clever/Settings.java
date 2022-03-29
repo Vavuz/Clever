@@ -20,7 +20,7 @@ public class Settings extends MainActivity{
 
     private String MY_PREFS = "switch_prefs";
     private String SWITCH_STAT = "switch_ON";
-    static boolean switchStatus;
+    boolean switchStatus;
     SharedPreferences sharedPreferences;    // stores switch value
     SharedPreferences.Editor editor;
 
