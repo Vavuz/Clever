@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         totalPager.setOffscreenPageLimit(2);
         totalPager.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
 
+        // ViewPager2 Circle Indicator creation
         CircleIndicator3 indicator = (CircleIndicator3) findViewById(R.id.tab_view);
         indicator.setViewPager(totalPager);
 

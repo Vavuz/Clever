@@ -4,7 +4,10 @@
     <string name="expense_price">"Prezzo abbonamento"</string>
     <string name="expense_type">"Tipo di abbonamento"</string>
     <string name="dark_mode">"Modalità scura⠀"</string>
-    <string name="add_sub">"Aggiungi un abbonamento:"</string>
+    <string name="add_sub">"Aggiungi abbonamento"</string>
+    <string name="edit_sub">"Edita abbonamento"</string>
+    <string name="fill_in">Compila i dettagli:</string>
+    <string name="settings">"Impostazioni"</string>
 
     <string name="daily">"Giornaliero"</string>
     <string name="weekly">"Settimanale"</string>
@@ -24,8 +27,10 @@
     <string name="five_years">"Ogni cinque anni"</string>
     <string name="ten_years">"Ogni dieci anni"</string>
 
-    <string name="daily_total">Totale giornaliero:</string>
-    <string name="weekly_total">Totale settimanale:</string>
-    <string name="monthly_total">Totale mensile:</string>
-    <string name="yearly_total">Totale annuale:</string>
+    <string name="daily_total">"Totale giornaliero:"</string>
+    <string name="weekly_total">"Totale settimanale:"</string>
+    <string name="monthly_total">"Totale mensile:"</string>
+    <string name="yearly_total">"Totale annuale:"</string>
+
+    <string name="donationText">"Puoi offrirmi un caffè!"</string>
 </resources>

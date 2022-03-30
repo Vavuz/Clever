@@ -37,13 +37,27 @@
         app:layout_constraintStart_toStartOf="parent" />/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/add_sub"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="@string/add_sub"
+        android:textColor="@color/white"
+        android:paddingLeft="30dp"
+        android:gravity="top"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fill_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="173dp"
-        android:text="@string/add_sub"
+        android:layout_marginTop="290dp"
+        android:text="@string/fill_in"
         android:textColor="@color/cells_titles_color"
-        android:textSize="32sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +68,7 @@
         android:layout_width="0dp"
         android:layout_height="61dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="71dp"
         app:counterEnabled="true"
@@ -62,7 +76,7 @@
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/fill_in">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/expense_name"

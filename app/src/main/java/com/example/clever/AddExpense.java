@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class AddExpense extends AppCompatActivity {
     private Expense selectedExpense;
     private MediaPlayer deleteSound;
     private MediaPlayer buttonSound;
+    private TextView fillIn;
 
     /**
      * Activity's creation method
@@ -99,6 +101,7 @@ public class AddExpense extends AppCompatActivity {
 
         deleteSound = MediaPlayer.create(this, R.raw.delete_sound);
         buttonSound = MediaPlayer.create(this, R.raw.any_button_sound);
+        fillIn = findViewById(R.id.add_sub);
     }
 
     /**
@@ -111,11 +114,13 @@ public class AddExpense extends AppCompatActivity {
         selectedExpense = Expense.getExpenseForID(passedExpenseID);
 
         if (selectedExpense != null) {
+            fillIn.setText(getString(R.string.edit_sub));
             nameEditText.setText(selectedExpense.getName());
             priceEditText.setText(selectedExpense.getPrice());
             typeSpinner.setSelection(getIndex(typeSpinner, selectedExpense.getSubscriptionType(), typeSpinner.getCount()));
         }
         else {
+            fillIn.setText(getString(R.string.add_sub));
             deleteButton.setVisibility(View.INVISIBLE);
         }
     }

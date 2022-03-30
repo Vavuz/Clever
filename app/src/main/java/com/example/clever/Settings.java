@@ -3,16 +3,20 @@ package com.example.clever;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SwitchCompat;
 
 import java.security.PrivilegedAction;
@@ -81,6 +85,18 @@ public class Settings extends MainActivity{
                     editor.apply();
                     nightSwitch.setChecked(false);
                 }
+            }
+        });
+
+        // Image View
+        ImageView coffee = (ImageView)findViewById(R.id.coffee);
+        coffee.setAlpha(190);
+        coffee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonSound.start();
+                Intent donationActivity = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/donate/?hosted_button_id=CKB3VPE6LGF6Q"));
+                startActivity(donationActivity);
             }
         });
     }
