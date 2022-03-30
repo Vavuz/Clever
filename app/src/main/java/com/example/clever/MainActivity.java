@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView expenseListView;
     public static float totalExpensePerDay = 0;
+    private MediaPlayer buttonSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton  addExpenseBtn = findViewById(R.id.add_expense);
         addExpenseBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                buttonSound.start();
                 Intent addExpenseActivity = new Intent(MainActivity.this, AddExpense.class);
                 startActivityForResult(addExpenseActivity, 1);
             }
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Button settingsBtn = findViewById(R.id.settings);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                buttonSound.start();
                 Intent settingsActivity = new Intent(MainActivity.this, Settings.class);
                 startActivityForResult(settingsActivity, 1);
             }
@@ -75,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
         // ViewPager2 creation
         ViewPager2 totalPager = (ViewPager2) findViewById(R.id.total_expenses);
         ArrayList<ViewPagerItem> viewPagerItems = new ArrayList<>();
-        viewPagerItems.add(new ViewPagerItem("Daily total:", totalExpensePerDay));
-        viewPagerItems.add(new ViewPagerItem("Weekly total:", totalExpensePerDay * 7));
-        viewPagerItems.add(new ViewPagerItem("Monthly total:", totalExpensePerDay * 30));
-        viewPagerItems.add(new ViewPagerItem("Yearly total:", totalExpensePerDay * 365));
+        viewPagerItems.add(new ViewPagerItem(getString(R.string.daily_total), totalExpensePerDay));
+        viewPagerItems.add(new ViewPagerItem(getString(R.string.weekly_total), totalExpensePerDay * 7));
+        viewPagerItems.add(new ViewPagerItem(getString(R.string.monthly_total), totalExpensePerDay * 30));
+        viewPagerItems.add(new ViewPagerItem(getString(R.string.yearly_total), totalExpensePerDay * 365));
 
         // ViewPager2 adapter creation
         ViewPagerAdapter adapter = new ViewPagerAdapter(viewPagerItems);
@@ -96,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
     private void initWidgets()
     {
         expenseListView = findViewById(R.id.expenses_list);
+        buttonSound = MediaPlayer.create(this, R.raw.any_button_sound);
     }
 
     private void loadFromDBToMemory()
@@ -118,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
             {
+                buttonSound.start();
                 Expense selectedExpense = (Expense) expenseListView.getItemAtPosition(position);
                 Intent editExpenseIntent = new Intent(getApplicationContext(), AddExpense.class);
                 editExpenseIntent.putExtra(Expense.EXPENSE_EDIT_EXTRA, selectedExpense.getId());

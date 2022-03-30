@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Clever</string>
-    <string name="add_expense">Add Expense</string>
+    <string name="app_name" translatable="false">Clever</string>
 
     <string name="expense_name">Expense Name</string>
     <string name="expense_price">Expense Price</string>

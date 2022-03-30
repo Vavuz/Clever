@@ -3,10 +3,12 @@ package com.example.clever;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 
 public class Expense {
-    HashMap<String, Integer> subscriptionsDict = new HashMap<String, Integer>();
+    static LinkedHashMap<String, Integer> subscriptionsDict = new LinkedHashMap<String, Integer>();
+    // static HashMap<String, Integer> subscriptionsDict = new HashMap<String, Integer>();
 
     public static ArrayList<Expense> expenseArrayList = new ArrayList<>();
     public static String EXPENSE_EDIT_EXTRA =  "expenseEdit";

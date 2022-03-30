@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="expense_name">"Nome abbonamento"</string>
+    <string name="expense_price">"Prezzo abbonamento"</string>
+    <string name="expense_type">"Tipo di abbonamento"</string>
+    <string name="dark_mode">"Modalità scura⠀"</string>
+    <string name="add_sub">"Aggiungi un abbonamento:"</string>
+
+    <string name="daily">"Giornaliero"</string>
+    <string name="weekly">"Settimanale"</string>
+    <string name="two_weeks">"Ogni due settimane"</string>
+    <string name="three_weeks">"Ogni tre settimane"</string>
+    <string name="four_weeks">"Ogni quattro settimane"</string>
+    <string name="monthly">"Mensile"</string>
+    <string name="two_months">"Ogni due mesi"</string>
+    <string name="three_months">"Ogni tre mesi"</string>
+    <string name="four_months">"Ogni quattro mesi"</string>
+    <string name="five_months">"Ogni cinque mesi"</string>
+    <string name="six_months">"Ogni sei mesi"</string>
+    <string name="yearly">"Annuale"</string>
+    <string name="two_years">"Ogni due anni"</string>
+    <string name="three_years">"Ogni tre anni"</string>
+    <string name="four_years">"Ogni quattro anni"</string>
+    <string name="five_years">"Ogni cinque anni"</string>
+    <string name="ten_years">"Ogni dieci anni"</string>
+
+    <string name="daily_total">Totale giornaliero:</string>
+    <string name="weekly_total">Totale settimanale:</string>
+    <string name="monthly_total">Totale mensile:</string>
+    <string name="yearly_total">Totale annuale:</string>
+</resources>

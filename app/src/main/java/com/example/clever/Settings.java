@@ -2,6 +2,7 @@ package com.example.clever;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -23,6 +24,7 @@ public class Settings extends MainActivity{
     boolean switchStatus;
     SharedPreferences sharedPreferences;    // stores switch value
     SharedPreferences.Editor editor;
+    private MediaPlayer buttonSound;
 
     /**
      * Activity's creation method
@@ -32,12 +34,15 @@ public class Settings extends MainActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
+        // Sound
+        buttonSound = MediaPlayer.create(this, R.raw.any_button_sound);
+
         // Back button
         Button settingsBackBtn = findViewById(R.id.backSettings);
         settingsBackBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent settingsActivity = new Intent(Settings.this, MainActivity.class);
-                startActivityForResult(settingsActivity, 1);
+                buttonSound.start();
+                finish();
             }
         });
 
@@ -64,14 +69,14 @@ public class Settings extends MainActivity{
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (compoundButton.isChecked()) {
                     // Set night mode
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     editor.putBoolean(SWITCH_STAT, true);
                     editor.apply();
                     nightSwitch.setChecked(true);
                 }
                 else {
                     // Set Light mode
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     editor.putBoolean(SWITCH_STAT, false);
                     editor.apply();
                     nightSwitch.setChecked(false);
