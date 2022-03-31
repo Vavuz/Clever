@@ -4,16 +4,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
+
 
 public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.ViewHolder> {
 
+    // Properties instantiation
     ArrayList<ViewPagerItem> viewPagerItems;
 
+    /**
+     * Constructor
+     * @param viewPagerItems
+     */
     public ViewPagerAdapter(ArrayList<ViewPagerItem> viewPagerItems) {
         this.viewPagerItems = viewPagerItems;
     }
@@ -32,12 +36,18 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         holder.totalPriceText.setText("£" + viewPagerItem.total);
     }
 
+    /**
+     * Returns viewPagerItems length
+     * @return
+     */
     @Override
     public int getItemCount() {
-        // Return array length
         return viewPagerItems.size();
     }
 
+    /**
+     * Creates a view for the total_expenses cells with time frame and total price
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView totalTypeText;
         TextView totalPriceText;

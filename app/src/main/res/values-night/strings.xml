@@ -9,6 +9,7 @@
     <string name="edit_sub">Edit subscription</string>
     <string name="fill_in">Fill in the details:</string>
     <string name="settings">Settings</string>
+    <string name="sound_mode">Sound⠀</string>
 
     <string name="daily">Daily</string>
     <string name="weekly">Weekly</string>
@@ -53,5 +54,5 @@
     <string name="monthly_total">Monthly total:</string>
     <string name="yearly_total">Yearly total:</string>
 
-    <string name="donationText">You can offer me a coffee!</string>
+    <string name="donationText">Would you like to offer me a coffee? Click it!</string>
 </resources>

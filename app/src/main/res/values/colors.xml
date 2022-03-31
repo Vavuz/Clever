@@ -8,7 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#808080</color>
-    <color name="cyan">#5AD37F</color>
     <color name="main_background">#808080</color>
     <color name="cells_background">#7ED957</color>
     <color name="total_back">#FF914D</color>

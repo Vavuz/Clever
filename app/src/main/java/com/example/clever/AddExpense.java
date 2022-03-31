@@ -12,19 +12,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
 
 public class AddExpense extends AppCompatActivity {
 
-    // Interface's features initialisation
+    // Properties instantiation
     private EditText nameEditText, priceEditText;
     private Spinner typeSpinner;
     private FloatingActionButton deleteButton;
@@ -38,16 +35,19 @@ public class AddExpense extends AppCompatActivity {
      * @param savedInstanceState
      */
     public void onCreate(Bundle savedInstanceState) {
+        // Activity initialisation
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); // the title will be hidden
         getSupportActionBar().hide(); // the title bar will be hidden
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.add_expense);
+
+        // Layout initialisation
         initWidgets();
         checkForEditExpense();
 
-        // Button to add an expense to the database
+        // Add and Save button
         FloatingActionButton saveExpenseBtn = (FloatingActionButton) findViewById(R.id.add);
         saveExpenseBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -55,7 +55,8 @@ public class AddExpense extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "You are missing a field!", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    buttonSound.start();
+                    if (MainActivity.soundOn) { buttonSound.start(); }
+                    MainActivity.secondPopulateFreedom = true;
                     Toast.makeText(getBaseContext(), nameEditText.getText() + " has been saved!", Toast.LENGTH_LONG).show();
                     MainActivity.totalExpensePerDay += Float.parseFloat(priceEditText.getText().toString());
                     saveExpense(v);
@@ -67,15 +68,16 @@ public class AddExpense extends AppCompatActivity {
         Button settingsBackBtn = findViewById(R.id.backSettings);
         settingsBackBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                buttonSound.start();
+                if (MainActivity.soundOn) { buttonSound.start(); }
                 finish();
             }
         });
 
-        // Button to delete an expense from the database
+        // Delete button
         deleteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                deleteSound.start();
+                if (MainActivity.soundOn) { deleteSound.start(); }
+                MainActivity.secondPopulateFreedom = true;
                 Toast.makeText(getBaseContext(), nameEditText.getText() + " has been deleted!", Toast.LENGTH_LONG).show();
                 MainActivity.totalExpensePerDay -= Float.parseFloat(priceEditText.getText().toString());
                 deleteExpense(v);
@@ -84,7 +86,7 @@ public class AddExpense extends AppCompatActivity {
     }
 
     /**
-     * Interface's features instantiation
+     * Properties initialisation
      */
     private void initWidgets()
     {
@@ -105,7 +107,7 @@ public class AddExpense extends AppCompatActivity {
     }
 
     /**
-     * Manages the expense's editing functionality
+     * Manages the expense's editing page layout
      */
     private void checkForEditExpense() {
         Intent previousIntent = getIntent();
@@ -150,8 +152,7 @@ public class AddExpense extends AppCompatActivity {
         String name = String.valueOf(nameEditText.getText());
         String price = String.valueOf(priceEditText.getText());
 
-        //dizionario, alla posizione (posizione di (elemento selezionato))
-
+        // Allows app to not crash when translated
         List<String> listOfKeys = new ArrayList<String>(Expense.subscriptionsDict.keySet());
         String subscriptionType = listOfKeys.get(typeSpinner.getSelectedItemPosition());
 
@@ -167,7 +168,9 @@ public class AddExpense extends AppCompatActivity {
             sqLiteManager.updateExpenseInDB(selectedExpense);
         }
 
-        finish();
+        MainActivity.populateFreedom = false;
+        Intent mainActivity = new Intent(AddExpense.this, MainActivity.class);
+        startActivityForResult(mainActivity, 1);
     }
 
     /**
@@ -178,6 +181,8 @@ public class AddExpense extends AppCompatActivity {
         selectedExpense.setDeleted(new Date());
         ExpensesDatabaseManager sqLiteManager = ExpensesDatabaseManager.instanceOfDatabase(this);
         sqLiteManager.updateExpenseInDB(selectedExpense);
-        finish();
+        MainActivity.populateFreedom = false;
+        Intent mainActivity = new Intent(AddExpense.this, MainActivity.class);
+        startActivityForResult(mainActivity, 1);
     }
 }

@@ -8,6 +8,7 @@
     <string name="edit_sub">"Edita abbonamento"</string>
     <string name="fill_in">Compila i dettagli:</string>
     <string name="settings">"Impostazioni"</string>
+    <string name="sound_mode">"Suoni⠀"</string>
 
     <string name="daily">"Giornaliero"</string>
     <string name="weekly">"Settimanale"</string>
@@ -32,5 +33,5 @@
     <string name="monthly_total">"Totale mensile:"</string>
     <string name="yearly_total">"Totale annuale:"</string>
 
-    <string name="donationText">"Puoi offrirmi un caffè!"</string>
+    <string name="donationText">"Vuoi offrirmi un caffè? Cliccalo!"</string>
 </resources>

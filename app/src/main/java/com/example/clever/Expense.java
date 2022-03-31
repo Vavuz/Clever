@@ -2,23 +2,29 @@ package com.example.clever;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 
 public class Expense {
-    static LinkedHashMap<String, Integer> subscriptionsDict = new LinkedHashMap<String, Integer>();
-    // static HashMap<String, Integer> subscriptionsDict = new HashMap<String, Integer>();
 
+    // Properties instantiation
+    static LinkedHashMap<String, Integer> subscriptionsDict = new LinkedHashMap<String, Integer>();
     public static ArrayList<Expense> expenseArrayList = new ArrayList<>();
     public static String EXPENSE_EDIT_EXTRA =  "expenseEdit";
-
     private int id;
     private String name;
     private String price;
     private String subscriptionType;
     private Date deleted;
 
+    /**
+     * Constructor one
+     * @param id
+     * @param name
+     * @param price
+     * @param subscriptionType
+     * @param deleted
+     */
     public Expense(int id, String name, String price, String subscriptionType, Date deleted)
     {
         this.id = id;
@@ -29,6 +35,13 @@ public class Expense {
         populateDictionary();
     }
 
+    /**
+     * Constructor two
+     * @param id
+     * @param name
+     * @param price
+     * @param subscriptionType
+     */
     public Expense(int id, String name, String price, String subscriptionType)
     {
         this.id = id;
@@ -38,6 +51,9 @@ public class Expense {
         deleted = null;
     }
 
+    /**
+     * Populates the dictionary of time frames
+     */
     public void populateDictionary() {
         this.subscriptionsDict.put("Daily", 1);
         this.subscriptionsDict.put("Weekly", 7);
@@ -58,6 +74,11 @@ public class Expense {
         this.subscriptionsDict.put("Every ten years", 3650);
     }
 
+    /**
+     * Returns an expense with a certain ID
+     * @param passedExpenseID
+     * @return
+     */
     public static Expense getExpenseForID(int passedExpenseID)
     {
         for (Expense expense : expenseArrayList)
@@ -69,6 +90,10 @@ public class Expense {
         return null;
     }
 
+    /**
+     * Returns the array of nonDeletedExpenses
+     * @return
+     */
     public static ArrayList<Expense> nonDeletedExpenses()
     {
         ArrayList<Expense> nonDeleted = new ArrayList<>();

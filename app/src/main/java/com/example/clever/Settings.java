@@ -6,35 +6,35 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SwitchCompat;
 
-import java.security.PrivilegedAction;
 
 public class Settings extends MainActivity{
 
-    private String MY_PREFS = "switch_prefs";
-    private String SWITCH_STAT = "switch_ON";
-    boolean switchStatus;
-    SharedPreferences sharedPreferences;    // stores switch value
-    SharedPreferences.Editor editor;
+    // Properties instantiation
     private MediaPlayer buttonSound;
+    private String MY_NIGHT_PREFS = "night_switch_prefs";
+    private String NIGHT_SWITCH_STAT = "night_switch_ON";
+    boolean nightSwitchStatus;
+    SharedPreferences nightSwitchSharedPreferences;
+    SharedPreferences.Editor nightSwitchEditor;
+    private String MY_SOUND_PREFS = "sound_switch_prefs";
+    private String SOUND_SWITCH_STAT = "sound_switch_ON";
+    boolean soundSwitchStatus;
+    SharedPreferences soundSwitchSharedPreferences;
+    SharedPreferences.Editor soundSwitchEditor;
 
     /**
      * Activity's creation method
      * @param savedInstanceState
      */
     public void onCreate(Bundle savedInstanceState) {
+        // Activity initialisation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
@@ -45,22 +45,24 @@ public class Settings extends MainActivity{
         Button settingsBackBtn = findViewById(R.id.backSettings);
         settingsBackBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                buttonSound.start();
-                finish();
+                if (MainActivity.soundOn) { buttonSound.start(); }
+                //finish();
+                MainActivity.populateFreedom = false;
+                Intent mainActivity = new Intent(Settings.this, MainActivity.class);
+                startActivityForResult(mainActivity, 1);
             }
         });
-
 
         // Switch for night mode
         SwitchCompat nightSwitch = (SwitchCompat) findViewById(R.id.switchNight);
         nightSwitch.setChecked(true);
-        sharedPreferences = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
-        editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
-        switchStatus = sharedPreferences.getBoolean(SWITCH_STAT, false);
-        nightSwitch.setChecked(switchStatus);
+        nightSwitchSharedPreferences = getSharedPreferences(MY_NIGHT_PREFS, MODE_PRIVATE);
+        nightSwitchEditor = getSharedPreferences(MY_NIGHT_PREFS, MODE_PRIVATE).edit();
+        nightSwitchStatus = nightSwitchSharedPreferences.getBoolean(NIGHT_SWITCH_STAT, false);
+        nightSwitch.setChecked(nightSwitchStatus);
 
         // Setting the dark/light mode
-        if (switchStatus) {
+        if (nightSwitchStatus) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
         else {
@@ -73,17 +75,60 @@ public class Settings extends MainActivity{
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (compoundButton.isChecked()) {
                     // Set night mode
+                    MainActivity.populateFreedom = false;
+                    Toast.makeText(getBaseContext(), "Dark mode on!", Toast.LENGTH_LONG).show();
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor.putBoolean(SWITCH_STAT, true);
-                    editor.apply();
+                    nightSwitchEditor.putBoolean(NIGHT_SWITCH_STAT, true);
+                    nightSwitchEditor.apply();
                     nightSwitch.setChecked(true);
                 }
                 else {
                     // Set Light mode
+                    MainActivity.populateFreedom = false;
+                    Toast.makeText(getBaseContext(), "Dark mode off!", Toast.LENGTH_LONG).show();
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor.putBoolean(SWITCH_STAT, false);
-                    editor.apply();
+                    nightSwitchEditor.putBoolean(NIGHT_SWITCH_STAT, false);
+                    nightSwitchEditor.apply();
                     nightSwitch.setChecked(false);
+                }
+            }
+        });
+
+        // Switch for sound
+        SwitchCompat soundSwitch = (SwitchCompat) findViewById(R.id.switchSound);
+        soundSwitch.setChecked(true);
+        soundSwitchSharedPreferences = getSharedPreferences(MY_SOUND_PREFS, MODE_PRIVATE);
+        soundSwitchEditor = getSharedPreferences(MY_SOUND_PREFS, MODE_PRIVATE).edit();
+        soundSwitchStatus = soundSwitchSharedPreferences.getBoolean(SOUND_SWITCH_STAT, false);
+        soundSwitch.setChecked(soundSwitchStatus);
+
+        // Setting the sound on/off
+        if (soundSwitchStatus) {
+            MainActivity.soundOn = true;
+        }
+        else {
+            MainActivity.soundOn = false;
+        }
+
+        // When switch is checked and unchecked
+        soundSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (compoundButton.isChecked()) {
+                    // Set sound on
+                    Toast.makeText(getBaseContext(), "Sound on!", Toast.LENGTH_LONG).show();
+                    soundSwitchEditor.putBoolean(SOUND_SWITCH_STAT, true);
+                    soundSwitchEditor.apply();
+                    soundSwitch.setChecked(true);
+                    MainActivity.soundOn = true;
+                }
+                else {
+                    // Set sound off
+                    Toast.makeText(getBaseContext(), "Sound off!", Toast.LENGTH_LONG).show();
+                    soundSwitchEditor.putBoolean(SOUND_SWITCH_STAT, false);
+                    soundSwitchEditor.apply();
+                    soundSwitch.setChecked(false);
+                    MainActivity.soundOn = false;
                 }
             }
         });
@@ -94,7 +139,7 @@ public class Settings extends MainActivity{
         coffee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonSound.start();
+                if (MainActivity.soundOn) { buttonSound.start(); }
                 Intent donationActivity = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/donate/?hosted_button_id=CKB3VPE6LGF6Q"));
                 startActivity(donationActivity);
             }
