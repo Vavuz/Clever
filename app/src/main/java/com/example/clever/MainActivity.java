@@ -1,6 +1,7 @@
 package com.example.clever;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
 import android.content.ComponentName;
 import android.content.Intent;
