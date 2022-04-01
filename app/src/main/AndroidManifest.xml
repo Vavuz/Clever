@@ -18,9 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".AddExpense"></activity>
-        <activity android:name=".Settings"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddExpense"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Settings"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
